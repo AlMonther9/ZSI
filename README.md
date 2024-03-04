@@ -10,10 +10,8 @@ This project involves the development of an environmental robot by the ZSI team.
 
 * Robot: The physical robot platform equipped with sensors.
 * Sensors: Including but not limited to temperature, pressure, humidity, gas, dust, and carbon monoxide sensors.
-* Microcontroller: ESP32 is used to gather data from the sensors.
-* Communication: Wireless data transmission from the microcontroller to a server.
-* Server: A server to receive, store, and process the sensor data.
-* Database: Storage for the received sensor data.
+* Microcontrollers: ESP32 and Raspberry Pi for server communication and control.
+* Power Source: Solar panels for sustainable power.
 
 <h3> Setup <img src="https://cdn-icons-png.flaticon.com/128/8084/8084300.png" width=50 align=center> </h3>
 
