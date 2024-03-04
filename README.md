@@ -1,5 +1,7 @@
 <div align="center">
 <h1> ZSI Environmental Robot Project </h1>
+</div>
+
 <h2> Overview </h2>
 This project involves the development of an environmental robot by the ZSI team. The robot is equipped with various sensors to collect environmental data, which is then sent to a server for storage and analysis.
 
