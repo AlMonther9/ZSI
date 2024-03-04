@@ -23,7 +23,7 @@ The robot collects sensor data and transmits it to the server.
 The server stores the received data in the database.
 Analyze the data stored in the database for environmental insights.
 <h3> Contributors </h3>
-[AlMonther Abdulhafeez, Mokhtar Omar]
+[AlMonther Abdulhafeez, Al-Mokhtar Omar]
 
 
 ## Authors <img src="https://cdn-icons-png.flaticon.com/128/2363/2363510.png" width=50 align=center>
