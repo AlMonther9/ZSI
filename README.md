@@ -8,26 +8,26 @@ This project involves the development of an environmental robot by the ZSI team.
 
 <h3> Components  <img src="https://cdn-icons-png.flaticon.com/128/781/781103.png" width=50 align=center> </h3> 
 
-Robot: The physical robot platform equipped with sensors.
-Sensors: Including but not limited to temperature, pressure, humidity, gas, dust, and carbon monoxide sensors.
-Microcontroller: ESP32 is used to gather data from the sensors.
-Communication: Wireless data transmission from the microcontroller to a server.
-Server: A server to receive, store, and process the sensor data.
-Database: Storage for the received sensor data.
+* Robot: The physical robot platform equipped with sensors.
+* Sensors: Including but not limited to temperature, pressure, humidity, gas, dust, and carbon monoxide sensors.
+* Microcontroller: ESP32 is used to gather data from the sensors.
+* Communication: Wireless data transmission from the microcontroller to a server.
+* Server: A server to receive, store, and process the sensor data.
+* Database: Storage for the received sensor data.
 
 <h3> Setup <img src="https://cdn-icons-png.flaticon.com/128/8084/8084300.png" width=50 align=center> </h3>
 
-Hardware Setup: Connect all sensors to the ESP32 and Raspberry Pi as per the provided guidelines.
-Software Setup: Upload the necessary code to the ESP32 and Raspberry Pi for data collection, transmission, and AI analysis.
-Server Setup: Set up a server to receive data from the ESP32 and Raspberry Pi.
-Database Setup: Install and configure a database to store the received sensor data.
+* Hardware Setup: Connect all sensors to the ESP32 and Raspberry Pi as per the provided guidelines.
+* Software Setup: Upload the necessary code to the ESP32 and Raspberry Pi for data collection, transmission, and AI analysis.
+* Server Setup: Set up a server to receive data from the ESP32 and Raspberry Pi.
+* Database Setup: Install and configure a database to store the received sensor data.
 
 <h3> Usage <img src="https://cdn-icons-png.flaticon.com/512/3123/3123008.png" width=50 align=center> </h3>
 
-Power on the environmental robot.
-The robot collects sensor data and transmits it to the server.
-The server stores the received data in the database.
-Analyze the data stored in the database for environmental insights.
+* Power on the environmental robot.
+* The robot collects sensor data and transmits it to the server.
+* The server stores the received data in the database.
+* Analyze the data stored in the database for environmental insights.
 
 <h3> Contributors <img src="https://cdn-icons-png.flaticon.com/128/868/868684.png" width=45 align=center> </h3>
 [AlMonther Abdulhafeez, Al-Mokhtar Omar]
