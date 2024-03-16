@@ -8,13 +8,13 @@ DATABASE = {
     'user': 'root',
     'pw': 'toor',
     'db': 'air_data',
-    'host': 'mokhtar-Machine',
+    'host': '127.0.0.1',
     'port': '3306',
 }
 
 
-# DB_URL = f"mysql+pymysql://{DATABASE['user']}:{DATABASE['pw']}@{DATABASE['host']}:{DATABASE['port']}/{DATABASE['db']}"
-DB_URL = f"sqlite:///db.sqlite3"
+DB_URL = f"mysql+pymysql://{DATABASE['user']}:{DATABASE['pw']}@{DATABASE['host']}:{DATABASE['port']}/{DATABASE['db']}"
+# DB_URL = f"sqlite:///db.sqlite3"
 # SECRET_KEY = "soon to make forms and ui "
 
 
