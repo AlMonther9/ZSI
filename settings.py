@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify
 
 DATABASE = {
     'user': 'root',
-    'pw': 'toor',
+    'pw': 'admin',
     'db': 'air_data',
     'host': '127.0.0.1',
     'port': '3306',
