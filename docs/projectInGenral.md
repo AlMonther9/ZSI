@@ -5,6 +5,10 @@
 $ git clone https://github.com/AlMonther9/ZSI.git
 $ python3 -m venv .venv
 ```
+
+> [!NOTE]
+> If you are on windows os Use `python` instead of `python3`
+
 ### For windows 
 ```
 $ venv\bin\Activate.ps1
