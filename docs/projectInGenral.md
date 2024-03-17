@@ -23,7 +23,7 @@ $ source venv/bin/activate
 ```
 And you will also need download [Mysql officail website](https://www.mysql.com/downloads/)<br>
 Or<br>
-You can use sqlite3 instead <br>check `settings.md` for more info before run the server 
+You can use sqlite3 instead <br>check `settings.md` for more info before running the server 
 ### Now you can run the server 
 ```
 (venv) $ flask run
