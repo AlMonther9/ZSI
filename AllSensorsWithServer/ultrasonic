@@ -1,0 +1,38 @@
+// To be added to the main code
+
+
+// Ultrasonic sensor settings
+const int trigPin = 26; // GPIO 26
+const int echoPin = 27; // GPIO 27
+
+void setup() {
+
+  // Ultrasonic sensor setup
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
+}
+
+void loop() {
+
+  // Ultrasonic sensor reading
+  long duration, distance;
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+  distance = (duration / 2) / 29.1; // Convert to centimeters
+
+}
+
+// Send data to server
+if (client.connect(serverAddress, serverPort)) {
+  String jsonData = "{\"gasSensorValue\":" + String(gasSensorValue) + ",\"tempPressureHumiditySensorValue\":" + String(tempPressureHumiditySensorValue) + ",\"latitudeDegrees\":" + String(GPS.latitudeDegrees, 4) + ",\"longitudeDegrees\":" + String(GPS.longitudeDegrees, 4) + ",\"dustDensity\":" + String(dustDensity) + ",\"carbonMonoxideRatio\":" + String(ratio) + ",\"distance\":" + String(distance) + "}";
+  String httpRequest = "POST /update HTTP/1.1\r\nHost: " + String(serverAddress) + "\r\nContent-Type: application/json\r\nContent-Length: " + String(jsonData.length()) + "\r\n\r\n" + jsonData;
+  client.print(httpRequest);
+  client.stop();
+} else {
+  Serial.println("Connection failed");
+}

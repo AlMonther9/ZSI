@@ -2,6 +2,16 @@
 #include <Adafruit_GPS.h>
 #include <SoftwareSerial.h>
 
+/*This code is designed to read values from various sensors (gas, temperature, pressure, humidity, GPS, air quality, dust, carbon monoxide) and send them to a server. The values that will be sent to the server include:
+
+gasSensorValue: Analog reading from the gas sensor.
+tempPressureHumiditySensorValue: Analog reading from the temperature, pressure, and humidity sensor.
+GPS.latitudeDegrees: Latitude in degrees from the GPS sensor.
+GPS.longitudeDegrees: Longitude in degrees from the GPS sensor.
+dustDensity: Calculated dust density from the air quality and dust sensor.
+ratio: Calculated ratio from the carbon monoxide sensor.
+These values will be formatted into a JSON object and sent to the server in an HTTP POST request. The server needs to be set up to receive this data and store it in a database.*/
+
 // WiFi settings
 const char* ssid = "A";
 const char* password = "@AlMonther0123E";

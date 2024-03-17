@@ -1,0 +1,81 @@
+#include <WiFi.h>
+#include <Adafruit_GPS.h>
+#include <SoftwareSerial.h>
+
+// WiFi settings
+const char* ssid = "your_ssid";
+const char* password = "your_password";
+const char* serverAddress = "192.168.1.100"; // IP address of your Raspberry Pi
+const int serverPort = 3000;
+WiFiClient client;
+
+// Motor control pins
+const int rightMotor1 = 26;
+const int rightMotor2 = 27;
+const int rightMotor3 = 14;
+const int leftMotor1 = 12;
+const int leftMotor2 = 13;
+const int leftMotor3 = 25;
+
+void setup() {
+  Serial.begin(9600);
+  delay(10);
+
+  // WiFi setup
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.println("Connecting to WiFi...");
+  }
+  Serial.println("Connected to WiFi");
+
+  // Motor control pins setup
+  pinMode(rightMotor1, OUTPUT);
+  pinMode(rightMotor2, OUTPUT);
+  pinMode(rightMotor3, OUTPUT);
+  pinMode(leftMotor1, OUTPUT);
+  pinMode(leftMotor2, OUTPUT);
+  pinMode(leftMotor3, OUTPUT);
+}
+
+void loop() {
+  // Your existing sensor reading code here
+
+  // Motor control code
+  moveForward(); // Example: move forward
+  delay(2000);   // Move forward for 2 seconds
+  stopMoving();  // Stop moving
+  delay(1000);   // Wait for 1 second
+}
+
+void moveForward() {
+  // Right side motors
+  digitalWrite(rightMotor1, HIGH);
+  digitalWrite(rightMotor2, LOW);
+  digitalWrite(rightMotor3, HIGH);
+
+  // Left side motors
+  digitalWrite(leftMotor1, LOW);
+  digitalWrite(leftMotor2, HIGH);
+  digitalWrite(leftMotor3, HIGH);
+}
+
+void stopMoving() {
+  // Right side motors
+  digitalWrite(rightMotor1, LOW);
+  digitalWrite(rightMotor2, LOW);
+  digitalWrite(rightMotor3, LOW);
+
+  // Left side motors
+  digitalWrite(leftMotor1, LOW);
+  digitalWrite(leftMotor2, LOW);
+  digitalWrite(leftMotor3, LOW);
+}
+
+/*This code assumes that the right motors are connected to pins 26, 27, and 14, and the left motors are connected to pins 12, 13, and 25. Adjust the pin numbers according to your actual motor connections.
+
+Separate motor control functions moveForward() and stopMoving() are used to control the movement of the robot. You can modify these functions to implement different movement patterns or behaviors as needed.*/
+
+
+
+
