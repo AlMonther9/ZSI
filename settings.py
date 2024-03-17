@@ -1,8 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, request, jsonify
+from flask import Flask
 
 
-
+SEREVER_ADDRESS = '0.0.0.0'
+PORT = 3000
 
 DATABASE = {
     'user': 'root',
