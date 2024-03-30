@@ -46,4 +46,9 @@ you should migrate your changes with database and its very very simple watch :
 (venv) $ flask db migrate -m "comment with your changes"
 (venv) $ flask db upgrade
 ```
+and you will see something like that 
+<img src="https://i.ibb.co/RzzftY8/Screenshot-at-2024-03-31-00-22-16.png">
+here i just updating the nullable field in db  
+
+
  have a nice day :) 
