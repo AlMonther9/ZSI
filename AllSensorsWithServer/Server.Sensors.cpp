@@ -1,13 +1,19 @@
 #include <WiFi.h>
+#include <WiFiClient.h>
+#include <WebServer.h>
+#include <ESPmDNS.h>
 #include <Adafruit_GPS.h>
 #include <SoftwareSerial.h>
 
 // WiFi settings
-const char* ssid = "your_ssid";
-const char* password = "your_password";
+const char *ssid = "...";
+const char *password = "...";
 const char* serverAddress = "192.168.x.x"; // IP address of your Raspberry Pi
 const int serverPort = 3000;
 WiFiClient client;
+
+// Web server settings
+WebServer server(80);
 
 // Sensor pins
 const int gasSensorPin = 32; // GPIO 32
@@ -32,8 +38,48 @@ SoftwareSerial mySerial(3, 2); // RX, TX
 Adafruit_GPS GPS(&mySerial);
 char c;
 
+void handleRoot() {
+  int gasSensorValue = analogRead(gasSensorPin);
+  int tempPressureHumiditySensorValue = analogRead(tempPressureHumiditySensorPin);
+  
+  char msg[1500];
+  snprintf(msg, 1500,
+           "<html>\
+  <head>\
+    <meta http-equiv='refresh' content='4'/>\
+    <meta name='viewport' content='width=device-width, initial-scale=1'>\
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>\
+    <title>ESP32 AlMonther's Server</title>\
+    <style>\
+    html { font-family: Arial; display: inline-block; margin: 0px auto; text-align: center;}\
+    h2 { font-size: 3.0rem; }\
+    p { font-size: 3.0rem; }\
+    .units { font-size: 1.2rem; }\
+    .BME-labels{ font-size: 1.5rem; vertical-align:middle; padding-bottom: 15px;}\
+    </style>\
+  </head>\
+  <body>\
+      <h2>ESP32 BME Server!</h2>\
+      <p>\
+        <i class='fas fa-thermometer-half' style='color:#ca3517;'></i>\
+        <span class='BME-labels'>Temperature</span>\
+        <span>%.2f</span>\
+        <sup class='units'>&deg;C</sup>\
+      </p>\
+      <p>\
+        <i class='fas fa-tint' style='color:#00add6;'></i>\
+        <span class='BME-labels'>Humidity</span>\
+        <span>%.2f</span>\
+        <sup class='units'>&percnt;</sup>\
+      </p>\
+  </body>\
+</html>", (float)tempPressureHumiditySensorValue, (float)gasSensorValue);
+
+  server.send(200, "text/html", msg);
+}
+
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   delay(10);
 
   // WiFi setup
@@ -43,6 +89,17 @@ void setup() {
     Serial.println("Connecting to WiFi...");
   }
   Serial.println("Connected to WiFi");
+  
+  // Print the IP address
+  Serial.println(WiFi.localIP());
+
+  // MDNS setup
+  if (MDNS.begin("esp32")) {
+    Serial.println("MDNS responder started");
+  }
+  server.on("/", handleRoot);
+  server.begin();
+  Serial.println("HTTP server started");
 
   // Sensor pins setup
   pinMode(gasSensorPin, INPUT);
@@ -70,6 +127,8 @@ void setup() {
 }
 
 void loop() {
+  server.handleClient();
+
   // Sensor readings
   int gasSensorValue = analogRead(gasSensorPin);
   int tempPressureHumiditySensorValue = analogRead(tempPressureHumiditySensorPin);
@@ -124,14 +183,17 @@ void stopMoving() {
 
 float readDustDensity() {
   // Sensor reading logic
+  return 0.0; // Placeholder value
 }
 
 float readCarbonMonoxideRatio() {
   // Sensor reading logic
+  return 0.0; // Placeholder value
 }
 
 float readUltrasonicDistance() {
   // Sensor reading logic
+  return 0.0; // Placeholder value
 }
 
 void sendDataToServer(int gasSensorValue, int tempPressureHumiditySensorValue, float dustDensity, float carbonMonoxideRatio, float distance, float latitude, float longitude) {
